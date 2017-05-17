@@ -28,8 +28,8 @@
     <div class="entries-area"><!--在div标签中添加class属性-->
       <h2>留言记录</h2>
       {% for greeting in greeting_list %}
-        <h3>{{greeting.name}} 的留言(2014/10/31 10:00:00):</h3>
-        <p>{{greeting.comment}}</p>
+        <h3>{{greeting.name}} 的留言({{ greeting.create_at|datatime_fmt }}):</h3>
+        <p>{{greeting.comment|nl2br}}</p>
         {% endfor %}
     </div>
   </body>
