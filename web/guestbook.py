@@ -1,10 +1,14 @@
 # coding: utf-8
 import shelve
+
+from flask import Flask,request,render_template,redirect,escape,Markup
+
+application = Flask(__name__)
+
 DATA_FILE = 'guestbook.dat'
 
 def save_data(name, comment, create_at):
-    """
-保存提交的数据
+    """保存提交的数据
     """
     #通过shelve模块打开数据库文件
     database = shelve.open(DATA_FILE)
@@ -35,5 +39,16 @@ def load_data():
 	database.close()
 	return greeting_list
 
+@application.route('/')
+def index():
+	'''首页
+	使用模版显示页面
+	'''
+	return render_template('index.html')
 
-	
+if __name__ == '__main__':
+	#在IP地址127.0.0.1的8000端口运行应用程序
+	application.run('127.0.0.1',8000,debug=True)
+
+
+
