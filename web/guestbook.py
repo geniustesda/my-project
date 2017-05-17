@@ -40,6 +40,16 @@ def load_data():
 	database.close()
 	return greeting_list
 
+
+@application.route('/')
+def index():
+    '''首页
+    使用模版显示页面
+    '''
+    #读取已提交的数据
+    greeting_list = load_data()
+    return render_template('index.html',greeting_list=greeting_list)
+
 @application.route('/post',methods=['POST'])
 def post():
     """用于提交评论的URL
@@ -53,14 +63,6 @@ def post():
     save_data(name,comment,create_at)
     #保存后重定向到首页
     return redirect('/')
-
-def index():
-	'''首页
-	使用模版显示页面
-	'''
-    #读取已提交的数据
-    greeting_list = load_data()
-	return render_template('index.html',greeting_list=greeting_list)
 
 if __name__ == '__main__':
 	#在IP地址127.0.0.1的8000端口运行应用程序
