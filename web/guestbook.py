@@ -1,5 +1,6 @@
 # coding: utf-8
 import shelve
+from datetime import datetime
 
 from flask import Flask,request,render_template,redirect,escape,Markup
 
@@ -39,12 +40,27 @@ def load_data():
 	database.close()
 	return greeting_list
 
-@application.route('/')
+@application.route('/post',methods=['POST'])
+def post():
+    """用于提交评论的URL
+    """
+    #获取已提交的数据
+    name = request.form.get('name') #名字
+    comment = request.form.get('comment') #留言
+    create_at = datetime.now() #投稿时间(当前时间)
+
+    #保存数据
+    save_data(name,comment,create_at)
+    #保存后重定向到首页
+    return redirect('/')
+
 def index():
 	'''首页
 	使用模版显示页面
 	'''
-	return render_template('index.html')
+    #读取已提交的数据
+    greeting_list = load_data()
+	return render_template('index.html',greeting_list=greeting_list)
 
 if __name__ == '__main__':
 	#在IP地址127.0.0.1的8000端口运行应用程序
