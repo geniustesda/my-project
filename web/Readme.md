@@ -17,7 +17,7 @@
 
 #### NOTE：
 
-跨站脚本攻击（Cross●Site●Scripting，XSSA）是一种常见的漏洞，用户能在某些以植入HTML的形式显示输入内容的应用中，故意植入一些攻击型的脚本（比如HTML标签或JavaScript 等）。
+跨站脚本攻击（Cross Site Scripting，XSSA）是一种常见的漏洞，用户能在某些以植入HTML的形式显示输入内容的应用中，故意植入一些攻击型的脚本（比如HTML标签或JavaScript 等）。
 
 XSS 漏洞可被用在会话劫持、钓鱼等恶意行为上。
 
