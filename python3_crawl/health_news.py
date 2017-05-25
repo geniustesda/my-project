@@ -14,7 +14,6 @@ soup = BeautifulSoup(response.text, 'html.parser')
 
 for news in soup.select('.news-item', limit=10):
     if len(news.select('h2')) > 0:
-        # table.write(id, 0, id + 1)
         title = news.select('h2')[0].text
         time = news.select('.time')[0].text
         url = news.select('a')[0]['href']
