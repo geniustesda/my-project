@@ -1,6 +1,5 @@
 # -*- coding :utf-8 -*-
 
-# http://health.sina.com.cn/healthcare/
 import requests
 from bs4 import BeautifulSoup
 
@@ -18,7 +17,7 @@ for news in soup.select('.news-item', limit=10):
         time = news.select('.time')[0].text
         url = news.select('a')[0]['href']
         print(time + " " + title + " " + url)
-        content = time + ' ' + title + ' ' + url + '\n'
+        content = (time + ' ' + title + ' ' + url + '\n').encode('utf8')
         # print(type (content))
 
         f = open('./health.txt', 'a+')
