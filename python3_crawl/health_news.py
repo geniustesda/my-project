@@ -3,7 +3,6 @@
 # http://health.sina.com.cn/healthcare/
 import requests
 from bs4 import BeautifulSoup
-import codecs
 
 # url = "http://health.sina.com.cn/healthcare/"
 url = "http://health.sina.com.cn/"
@@ -21,10 +20,9 @@ for news in soup.select('.news-item', limit=10):
         url = news.select('a')[0]['href']
         print(time + " " + title + " " + url)
         content = time + ' ' + title + ' ' + url + '\n'
-        #         print(type (content))
+        # print(type (content))
 
-        for data in content:
-            f = open('./health.txt', 'a+')
-            f.write(data)
-            f.close()
+        f = open('./health.txt', 'a+')
+        f.write(content)
+        f.close()
     print("successfully!")
