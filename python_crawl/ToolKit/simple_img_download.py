@@ -51,10 +51,6 @@ def get_img_information(web_url,web_title,web_img_url):
         f.close()
         
         # 将二进制图片内容保存到指定文件夹
-        f = open('./pic/img_information.txt', 'a+')
-        f.write(str(count)+src+'\n')
-        f.close()
-
         with open('./pic/{}'.format(count)+'.jpg.png', 'wb+') as file:
             try:
                 img_data = requests.get(img_data_url).content
