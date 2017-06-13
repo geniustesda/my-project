@@ -9,11 +9,6 @@ from urlparse import urljoin
 import os
 import re
 
-# 图片存储路径
-IMG_DIR = "pic"
-if os.path.exists(IMG_DIR) == False:
-    os.mkdir(IMG_DIR)
-
 # 图片地址获取，并且保存图片数据到本地
 def get_img_information(web_url,web_title,web_img_url):
     # 输入图片的基本信息
