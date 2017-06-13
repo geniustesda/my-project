@@ -9,14 +9,11 @@ from urlparse import urljoin
 import os
 import re
 
-<<<<<<< HEAD
 # 图片存储路径
 IMG_DIR = "pic"
 if os.path.exists(IMG_DIR) == False:
     os.mkdir(IMG_DIR)
 
-=======
->>>>>>> origin/master
 # 图片地址获取，并且保存图片数据到本地
 def get_img_information(web_url,web_title,web_img_url):
     # 输入图片的基本信息
@@ -49,7 +46,7 @@ def get_img_information(web_url,web_title,web_img_url):
     for i, j in zip(title, img_url):
         img_data_url = urljoin(url_base, j)
         i = "".join(i.split())
-<<<<<<< HEAD
+
         src = (str(count)+i + " " + img_data_url).encode('utf-8')
         print(src)
 
@@ -59,14 +56,10 @@ def get_img_information(web_url,web_title,web_img_url):
         f.close()
         
         # 将二进制图片内容保存到指定文件夹
-=======
-        src = (i+" "+ img_data_url).encode('utf-8')
-
         f = open('./pic/img_information.txt', 'a+')
         f.write(str(count)+src+'\n')
         f.close()
 
->>>>>>> origin/master
         with open('./pic/{}'.format(count)+'.jpg.png', 'wb+') as file:
             try:
                 img_data = requests.get(img_data_url).content
@@ -74,19 +67,14 @@ def get_img_information(web_url,web_title,web_img_url):
                 count += 1
             except:
                 print("picture save error!")
-<<<<<<< HEAD
-        file.close()
 
-if __name__ == "__main__":
-=======
-            file.close()
+        file.close()
 
 if __name__ == "__main__":
     # 图片存储路径
     IMG_DIR = "pic"
     if os.path.exists(IMG_DIR) == False:
         os.mkdir(IMG_DIR)
->>>>>>> origin/master
 
     # 默认图片地址信息
     img_base_url = "http://588ku.com/beijing/0-0-dnum-0-8-0-0-0-1/"
