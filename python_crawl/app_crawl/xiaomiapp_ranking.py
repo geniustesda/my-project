@@ -11,7 +11,7 @@ label = re.findall('<p class="app-desc">', html.text, re.S)
 
 # 通过len()方法来计算label的个数，从而获取当前页面App的个数
 pageAppNum = len(label)
-print ("每一页app个数为%d，共%d页"%pageAppNum)
+print ("每一页app个数为%d"%pageAppNum)
 
 print u'请输入期望获取的App数目：'
 
