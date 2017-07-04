@@ -40,19 +40,22 @@ wc.generate(text)
 # 从背景图片生成颜色值
 image_colors = ImageColorGenerator(alice_coloring)
 
-# 以下代码显示图片
+# 显示图片
 plt.imshow(wc)
-plt.axis("off")
+# 是否显示标尺
+plt.axis("on")
 # 绘制词云
 plt.figure()
+wc.to_file(path.join(d, u"alice_wordcloud1.png"))
+
 # recolor wordcloud and show
 # we could also give color_func=image_colors directly in the constructor
 plt.imshow(wc.recolor(color_func=image_colors))
 plt.axis("off")
-# 绘制背景图片为颜色的图片
+# 绘制背景图片为字体颜色的图片
 plt.figure()
 plt.imshow(alice_coloring, cmap=plt.cm.gray)
 plt.axis("off")
 plt.show()
 # 保存图片
-wc.to_file(path.join(d, u"名称.png"))
+wc.to_file(path.join(d, u"alice_wordcloud2.png"))
