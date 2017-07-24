@@ -66,7 +66,7 @@ ROBOTSTXT_OBEY = True
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
 #    'zufang.pipelines.ZufangPipeline': 300,
-    'zufang.pipelines.ZufangPipeline': 300
+    'zufang.pipelines.ZufangPipeline': 300,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
