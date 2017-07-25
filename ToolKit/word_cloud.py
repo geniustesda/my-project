@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+'''
+用jieba和matplotlib生成简单的词云图片
+'''
 import jieba
 import matplotlib.pyplot as plt
 from wordcloud import WordCloud
