@@ -1,4 +1,7 @@
 # -*- coding:utf8 -*-
+"""
+爬取豆瓣音乐前250名音乐信息
+"""
 import requests
 import re
 from bs4 import BeautifulSoup
@@ -12,7 +15,7 @@ musictop = douban['musictop']
 headers = {
     'User-Agent':'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebkit/537.36 (KHTML, like Geckp) Chrome/55.0.2883.87 Safari/537.36'
 }
-urls = ['https://music.douban.com/top250?start={}'.format(str(i)) for i in range(0,250,25)]
+urls = ['https://music.douban.com/top250?start={}'.format(str(i)) for i in range(0, 250, 25)]
 
 def get_url_music(url):
     wb_data = requests.get(url, headers=headers)
@@ -23,12 +26,12 @@ def get_url_music(url):
         time.sleep(2)
 
 def get_music_info(url):
-    wb_data = requests.get(url, headers = headers)
+    wb_data = requests.get(url, headers=headers)
     soup = BeautifulSoup(wb_data.text, 'lxml')
     names = soup.select('h1 > span')
     authors = soup.select('span.pl > a')
-    styles = re.findall('<span class="pl">流派:</span>&nbsp;(.*?)<br />',wb_data.text,re.S)
-    times = re.findall('<span class="pl">发行时间:</span>&nbsp;(.*?)<br />',wb_data.text,re.S)
+    styles = re.findall('<span class="pl">流派:</span>&nbsp;(.*?)<br />', wb_data.text, re.S)
+    times = re.findall('<span class="pl">发行时间:</span>&nbsp;(.*?)<br />', wb_data.text, re.S)
     contents = soup.select('span.short > span')
     if len(names) == 0:
         name = '缺失'
@@ -50,7 +53,7 @@ def get_music_info(url):
         content = '无'
     else:
         content = contents[0].get_text()
-    info ={
+    info = {
         'name': name,
         'author': author,
         'style': style,

@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
-
+"""
+使用GUI界面操作爬虫，获取前250名电影
+"""
 from Tkinter import *
 from ScrolledText import ScrolledText
 import requests, re, threading
@@ -27,7 +29,7 @@ def write():
     varl.set('开始爬取内容')
     ID = 0
     nums = 1
-    while ID < 250:
+    while ID < 500:
         res = replite(ID)
         ID += 25
         for each in res:
