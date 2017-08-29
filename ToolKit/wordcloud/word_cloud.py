@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from wordcloud import WordCloud
 
 # 打开本体TXT文件
-text = open('./test.txt').read()
+text = open('./alice.txt').read()
 print type(text)
 
 # 结巴分词 cut_all=True 设置为全模式
