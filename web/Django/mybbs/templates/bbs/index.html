@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+<!--{% load static %}-->
+
+
+{% block page-container %}
+    {{ article_list.head_img }}
+
+    {% for article in article_list %}
+    <div class="jumbotron">
+        <img src="/static/{{ article.author.head_img }}" alt="">
+        <!--<img src="{% static article.author.head_img %}" alt="">  &lt;!&ndash;第二种静态文件写法&ndash;&gt;-->
+
+        <div>
+        <a href="{% url 'article_detail' article.id %}">{{ article.title }}</a>
+        </div>
+
+        <div>{{ article.content }}</div>
+        <div>{{ article.brief}}</div>
+        <div>{{ article.last_modify }}</div>
+        <br/>
+    </div>
+    {% endfor %}
+
+    {{ article_list }}
+{% endblock %}
+
+

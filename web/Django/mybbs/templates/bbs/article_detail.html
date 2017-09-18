@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block title %}
+    <title>{{ article_obj.title }}</title>
+    {% endblock %}
+</head>
+<body>
+    {% block page-container %}
+        <div class="wrap-left">
+            <div class="article-title-bg">
+                {{ article_obj.title }}
+
+            </div><br/>
+            <div class="article-title-brief">
+                <span>作者:{{article_obj.author.name}}</span>
+                <span>{{article_obj.pub_date}}</span>
+                <br/>
+                <span class="glyphicon glyphicon-comment">{{comments.comment_count}}</span>
+                <span class="glyphicon glyphicon-thumbs-up">{{comments.thumb_count}}</span>
+            </div>
+            <div class="article-content">
+                <img src="/static/{{article_obj.author.head_img}}">
+                <br/>
+                {{ article_obj.content}}
+            </div>
+        </div>
+        <div class="wrap-right">
+            sss
+        </div>
+        <div class="clear-both"></div>
+
+    {% endblock %}
+</body>
+</html>
