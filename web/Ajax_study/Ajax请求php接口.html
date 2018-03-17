@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajax请求写入Mysql数据库</title>
+</head>
+<body>
+    <button id="button">获取php数据</button>
+    <br><br>
+    
+    <h1>正常表单提交数据到PHP</h1>
+    <form action="process.php" method="GET">
+        <input type="text" name="name">
+        <input type="submit" value="提交">
+    </form>
+    <hr>
+
+    <h1>Ajax请求数据get</h1>
+    <form id="getForm" >
+        <input type="text" name="name" id="name1">
+        <input type="submit" value="提交">
+    </form>
+    <hr>
+    
+    <h1>Ajax请求数据post</h1>
+    <form id="postForm">
+        <input type="text" name="name" id="name2">
+        <input type="submit" value="提交">
+    </form>
+
+    
+    <script>
+        document.getElementById('button').addEventListener('click', getData);
+        document.getElementById('getForm').addEventListener('submit', getForm);
+        document.getElementById('postForm').addEventListener('submit', postForm);
+
+        function getData(){
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "process.php?name=Herry", true);
+            xhr.onload=function(){
+                console.log(this.responseText);
+            }
+            xhr.send();
+        }
+
+        function getForm(e){
+            e.preventDefault();
+            var name = document.getElementById('name1').value;
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "process.php?name="+name, true);
+            xhr.onload=function(){
+                console.log(this.responseText);
+            }
+            xhr.send();
+        }
+
+        function postForm(e){
+            e.preventDefault();
+            var name = document.getElementById('name2').value;
+            var params = "name=" + name;
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', "process.php", true);
+            //设置请求头
+            xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+            xhr.onload=function(){
+                console.log(this.responseText);
+            }
+            xhr.send(params);
+        }
+    </script>
+    
+</body>
+</html>

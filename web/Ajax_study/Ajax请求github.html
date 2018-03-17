@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>请求Github接口</title>
+    <style>
+        .user{
+            display: flex;
+            background: #f4f4f4;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .user ul{
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>所有github用户信息</h1>
+    <br><br>
+    <button id="button">请求Github接口</button>
+    <hr>
+    
+    <div id="users"></div>
+    <script>
+        document.getElementById('button').addEventListener('click', loadeUsers);
+        function loadeUsers(){
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', "https://api.github.com/users", true);
+            xhr.onload = function(){
+                var users = JSON.parse(this.responseText);
+                // console.log(users);
+
+                var output='';
+                for(var i in users){
+                    output += `
+                      <div class="user">
+                            <a href="${users[i].html_url}">
+                                <img src="${users[i].avatar_url}"   width="70" height="70"/>
+                            </a>
+                            <ul>
+                                <li>id: ${users[i].id}</li>
+                                <li>name: ${users[i].login}</li>
+                                <li>site_admin: ${users[i].site_admin}</li>
+                            </ul>
+                      </div>  
+                    `;
+                }
+                document.getElementById('users').innerHTML = output;
+            }
+            xhr.send();
+        }
+    </script>
+    
+</body>
+</html>
