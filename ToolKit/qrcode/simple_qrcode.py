@@ -1,17 +1,17 @@
 # -*- coding:utf-8 -*-
-import img_qr
+import qrcode
 
 # 方法一
 # 实例化对象并保存
-img = img_qr.make("http://www.github.com")
+img = qrcode.make("http://www.github.com")
 img.save("test1.png")
 
 
 # 方法二
 # 实例化对象并编写详细参数
-qr = img_qr.QRCode(
-    version =1,
-    error_correction=img_qr.constants.ERROR_CORRECT_L,
+qr = qrcode.QRCode(
+    version=1,
+    error_correction=qrcode.constants.ERROR_CORRECT_L,
     box_size=10,
     border=4,
     )
